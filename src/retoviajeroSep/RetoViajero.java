@@ -24,6 +24,7 @@ public class RetoViajero extends Applet {
     }
     public void paint(Graphics g){
         m.pintarMapa(g);
+        
     }
 }
 

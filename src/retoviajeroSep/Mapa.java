@@ -18,6 +18,7 @@ public class Mapa {
     int cDestino;
     Recorrido re;
     Vector cRecorridas=new Vector(); 
+    int distanciaR;
     
     public Mapa(RetoViajero app){
         this.app=app;
@@ -26,7 +27,7 @@ public class Mapa {
         tamañoCiID=app.tamañoID;
         coordenadas=obtenerPosicion();
         numeroCa=Integer.parseInt(coordenadas.get(2).nextToken());
-        
+        distanciaR=0;
         
         System.out.println("Numero Caminos: "+numeroCa);
         
@@ -106,7 +107,7 @@ public class Mapa {
           
             
            System.out.println("Caminos contados:"+contador);
-           System.out.println("Camino"+caminos[1][84]);
+           //System.out.println("Camino"+caminos[1][84]);
         /*
         for(int i=0; i==numeroCi; i++){
             for(int j=0; j==numeroCi; j++){
@@ -151,8 +152,12 @@ public class Mapa {
         pintarCaminos(g);
         pintarCiudadesI(g);
         pintarRecorrido(g);
-        
-        
+        pintarDistancia(g);
+        /*
+        for(int i=0;i<cRecorridas.size();i++){
+            System.out.print(cRecorridas.elementAt(i)+"--");
+        }*/
+        //System.out.println("Distancia recorrida: "+distanciaR);
     }/*
     void pintarRecorrido(Graphics g){
         re=new Recorrido(ciudades[cOrigen], ciudades[cDestino], caminos);
@@ -204,6 +209,7 @@ public class Mapa {
          }
         return numero;
     }
+    
     public int calcularPosibles(int cActual){
         int ciudadSig=0;        
         //int ciudadAnt=cActual;
@@ -247,20 +253,21 @@ public class Mapa {
     
     public void pintarRecorrido(Graphics g){
         int ciudadActual=cOrigen;
-        System.out.println("Salida: "+ciudadActual);
+        //System.out.println("Salida: "+ciudadActual);
         
         g.setColor(Color.white);
         
         while(ciudadActual!=cDestino){
             int ciudadSig=calcularPosibles(ciudadActual);
             //System.out.println("Voy a ir a: "+ciudadSig);
-            g.drawLine(ciudades[ciudadActual][0], ciudades[ciudadActual][1], ciudades[ciudadSig][0], ciudades[ciudadSig][1]);            
+            g.drawLine(ciudades[ciudadActual][0], ciudades[ciudadActual][1], ciudades[ciudadSig][0], ciudades[ciudadSig][1]);  
+            distanciaR+=caminos[ciudadActual][ciudadSig];
+            //System.out.println("Distancia recorrida: "+distanciaR);
             ciudadActual=ciudadSig;
-            //System.out.print("Ahora estoy en: -----"+ciudadActual);
-            cRecorridas.addElement(ciudadActual);
-            
-            
+            //System.out.print(ciudadActual);
+            cRecorridas.addElement(ciudadActual);       
         }
+        
     }
     
     public int calcularDistancia(int cO,int cD){    
@@ -312,7 +319,13 @@ public class Mapa {
     
     public void recorridoOut(){
         for(int i=0;i<cRecorridas.size();i++){
-            
+            System.out.print(cRecorridas.elementAt(i)+"--");
         }
+    }
+    void pintarDistancia(Graphics g){
+        String dis="Distancia recorrida: "+Integer.toString(distanciaR);
+        g.setColor(Color.BLACK);
+        g.setFont(null);
+        g.drawString(dis, app.getWidth()-400, app.getHeight()-50);
     }
 }
