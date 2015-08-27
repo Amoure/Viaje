@@ -17,8 +17,9 @@ public class Mapa {
     int cOrigen;
     int cDestino;
     Recorrido re;
-    Vector cRecorridas=new Vector(); 
+    //Vector cRecorridas=new Vector(); 
     int distanciaR;
+    ArrayList cRecorridas=new ArrayList(); 
     
     public Mapa(RetoViajero app){
         this.app=app;
@@ -70,7 +71,7 @@ public class Mapa {
             }
            
         
-        System.out.println("Ciudades contadas:"+contador);
+        //System.out.println("Ciudades contadas:"+contador);
         //System.out.println(ciudades[contador-1].cx);
     } 
     
@@ -106,7 +107,7 @@ public class Mapa {
             }
           
             
-           System.out.println("Caminos contados:"+contador);
+           //System.out.println("Caminos contados:"+contador);
            //System.out.println("Camino"+caminos[1][84]);
         /*
         for(int i=0; i==numeroCi; i++){
@@ -144,7 +145,7 @@ public class Mapa {
     }
     void pintarMapa(Graphics g){
         
-        for(int i=0; i<numeroCi; i++){
+        for(int i=1; i<numeroCi; i++){
             this.pintarCiudades(g,i);
             //System.out.println(i);
             
@@ -265,7 +266,7 @@ public class Mapa {
             //System.out.println("Distancia recorrida: "+distanciaR);
             ciudadActual=ciudadSig;
             //System.out.print(ciudadActual);
-            cRecorridas.addElement(ciudadActual);       
+            cRecorridas.add(ciudadActual);       
         }
         
     }
@@ -319,7 +320,7 @@ public class Mapa {
     
     public void recorridoOut(){
         for(int i=0;i<cRecorridas.size();i++){
-            System.out.print(cRecorridas.elementAt(i)+"--");
+            System.out.print(cRecorridas.get(i)+"--");
         }
     }
     void pintarDistancia(Graphics g){
