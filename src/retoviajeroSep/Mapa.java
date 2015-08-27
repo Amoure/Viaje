@@ -77,7 +77,7 @@ public class Mapa {
     
     public void crearCaminos(){
         
-        int contador=1;
+        //int contador=1;
         //caminos[0]=new Camino(ciudades[1],ciudades[1]);
         /*for(int i=0; i==numeroCi;i++){
           for(int j=0;j==numeroCi;j++){   
@@ -97,7 +97,7 @@ public class Mapa {
                     //System.out.println("C: "+contador);
                     caminos[origen][destino]=distancia; 
                     //caminos[destino][origen]=distancia;
-                    contador++;
+                    //contador++;
                     
                     //System.out.println(origen+"+"+destino+","+distancia);
                     //(((numeroCi+3)*2)+numeroCa*2)-1
@@ -169,8 +169,8 @@ public class Mapa {
         g.fillOval(ciudades[i][0], ciudades[i][1], app.tamaño, app.tamaño);
     }
     void pintarCaminos(Graphics g){
-        for(int i=0; i<= 1053; i++){
-            for(int j=0; j<=1053; j++){
+        for(int i=0; i<= numeroCi; i++){
+            for(int j=0; j<=numeroCi; j++){
                 if(caminos[i][j]!=0){
                     //System.out.println(i+" "+caminos[i][j]+" "+ciudades[i][0]+" "+ciudades[i][1]+" "+ciudades[j][0]+" "+ciudades[j][1]);
                     g.drawLine(ciudades[i][0], ciudades[i][1], ciudades[j][0], ciudades[j][1]);
@@ -215,7 +215,7 @@ public class Mapa {
         int ciudadSig=0;        
         //int ciudadAnt=cActual;
         
-        for(int i=0; i<= 1053; i++){
+        for(int i=0; i<=numeroCi; i++){
             
             
             
@@ -266,6 +266,7 @@ public class Mapa {
             //System.out.println("Distancia recorrida: "+distanciaR);
             ciudadActual=ciudadSig;
             //System.out.print(ciudadActual);
+            if(cRecorridas.contains(ciudadActual)==false)
             cRecorridas.add(ciudadActual);       
         }
         

@@ -43,7 +43,7 @@ public class RetoViajero extends Applet implements Runnable{
         Thread hiloActual=Thread.currentThread();
         while(hilo==hiloActual){
             try{
-                Thread.sleep(50);
+                Thread.sleep(40);
                 cRecorridas=m.cRecorridas;
                 System.out.print("Camino recorrido: ");
                 for(int i=0;i<cRecorridas.size();i++){
@@ -52,12 +52,12 @@ public class RetoViajero extends Applet implements Runnable{
                     //m.recorridoOut();
                     //}
                 }  
-                hilo=null;
+                stop();
             }catch(InterruptedException e){}
+            
         }
         
     }
-    
     public void paint(Graphics g){
         //System.out.println("Metodo paint");
         m.pintarMapa(g);
