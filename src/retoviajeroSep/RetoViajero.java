@@ -46,11 +46,8 @@ public class RetoViajero extends Applet implements Runnable{
                 Thread.sleep(40);
                 cRecorridas=m.cRecorridas;
                 System.out.print("Camino recorrido: ");
-                for(int i=0;i<cRecorridas.size();i++){
-                    //while((int)cRecorridas.elementAt(i)!=1051){
+                for(int i=0;i<cRecorridas.size();i++){                    
                         System.out.print(cRecorridas.get(i)+"--");
-                    //m.recorridoOut();
-                    //}
                 }  
                 stop();
             }catch(InterruptedException e){}
@@ -60,9 +57,8 @@ public class RetoViajero extends Applet implements Runnable{
     }
     public void paint(Graphics g){
         //System.out.println("Metodo paint");
-        m.pintarMapa(g);
+        m.pintarMapa(g);        
         
-        //m.recorridoOut();
         
     }
 }
